@@ -1,1 +1,239 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kristīna Kaņepe — Izaugsmes koučings</title>
+  <style>
+    :root{
+      --bg:#fbfbff;
+      --ink:#18212b;
+      --muted:#556371;
+      --line:#e9eef6;
+      --card:#ffffff;
+      --accent:#63c1cf;
+      --accent2:#bfe37a;
+      --accent3:#ffe1b7;
+      --radius:22px;
+      --shadow:0 18px 40px rgba(20, 60, 90, .08);
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      --max:1080px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--font); color:var(--ink);
+      background:
+        radial-gradient(700px 500px at 20% 10%, rgba(99,193,207,.14), transparent 62%),
+        radial-gradient(700px 500px at 80% 18%, rgba(191,227,122,.14), transparent 62%),
+        radial-gradient(700px 500px at 50% 92%, rgba(255,225,183,.20), transparent 62%),
+        var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 60px}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:12px 0;
+    }
+    .brand b{display:block; font-size:14px}
+    .brand small{display:block; font-size:12px; color:var(--muted); margin-top:2px}
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{font-size:13px; color:var(--muted); padding:9px 11px; border-radius:999px; border:1px solid transparent}
+    .nav a:hover{background:#fff; border-color:var(--line); color:var(--ink)}
 
+    .hero{
+      margin-top:10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.80);
+      backdrop-filter: blur(8px);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+      text-align:center;
+    }
+    .ring{
+      position:absolute; border-radius:50%;
+      border:1px dashed rgba(99,193,207,.35);
+      opacity:.65;
+      pointer-events:none;
+    }
+    .ring.r1{width:520px; height:520px; left:-220px; top:-220px}
+    .ring.r2{width:560px; height:560px; right:-260px; top:-260px; border-color: rgba(191,227,122,.35)}
+    .ring.r3{width:680px; height:680px; left:50%; bottom:-420px; transform:translateX(-50%); border-color: rgba(255,225,183,.45)}
+
+    .portrait{
+      width:170px; height:170px; border-radius:50%;
+      margin:0 auto 14px;
+      border:1px solid var(--line);
+      background:#fff;
+      overflow:hidden;
+      box-shadow: 0 16px 30px rgba(20, 60, 90, .10);
+    }
+    .portrait img{width:100%; height:100%; object-fit:cover; display:block}
+    h1{margin:0 0 10px; font-size:40px; letter-spacing:-.8px; line-height:1.05}
+    .lead{margin:0 auto 14px; color:var(--muted); font-size:16px; line-height:1.7; max-width: 72ch}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:10px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px; border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 12px 24px rgba(20, 60, 90, .06);
+      font-size:14px;
+    }
+    .btn.primary{
+      border-color: rgba(99,193,207,.35);
+      background: linear-gradient(135deg, rgba(99,193,207,.14), rgba(191,227,122,.12));
+    }
+
+    .grid{
+      margin-top:18px;
+      display:grid; gap:14px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .card{
+      background:rgba(255,255,255,.86);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .card h2{margin:0 0 10px; font-size:18px}
+    .card p{margin:0; color:var(--muted); line-height:1.65}
+    .steps{
+      display:grid; gap:10px; margin-top:12px;
+    }
+    .step{
+      display:grid; gap:6px;
+      padding:12px; border-radius:16px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .step b{font-size:13px}
+    .step span{color:var(--muted); font-size:13px; line-height:1.55}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .chip{font-size:12px; color:var(--muted); padding:8px 10px; border:1px solid var(--line); border-radius:999px; background:#fff}
+
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+
+    @media (max-width: 860px){
+      h1{font-size:32px}
+      .grid{grid-template-columns: 1fr}
+      .portrait{width:150px; height:150px}
+    }
+    @media (max-width: 520px){
+      .btn{width:100%}
+      .cta{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="brand">
+        <b>Kristīna Kaņepe</b>
+        <small>koučings • personāla vadība • izaugsme</small>
+      </div>
+      <nav class="nav" aria-label="Izvēlne">
+        <a href="#koucings">Koučings</a>
+        <a href="#organizacijam">Organizācijām</a>
+        <a href="#kontakti">Kontakti</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="ring r1" aria-hidden="true"></div>
+      <div class="ring r2" aria-hidden="true"></div>
+      <div class="ring r3" aria-hidden="true"></div>
+
+      <div class="portrait" aria-label="Kristīnas foto">
+        <img src="kristina.jpg" alt="Kristīna Kaņepe" onerror="this.style.display='none'" />
+      </div>
+
+      <h1>Līdzsvars, kas dod virzienu.</h1>
+      <p class="lead">
+        Esmu personāla vadības profesionāle ar vairāk nekā desmit gadu pieredzi, kuras darba pamatā ir atklātība, cieņa un sadarbība.
+        Koučingā palīdzēju atrast skaidrību, lai no domām nonāktu līdz rīcībai — bez spiediena, bet ar struktūru.
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="#kontakti">Pieteikt ievadsarunu</a>
+        <a class="btn" href="#koucings">Kā notiek koučings</a>
+        <a class="btn" href="#organizacijam">Piedāvājums uzņēmumiem</a>
+      </div>
+
+      <div class="chips" style="justify-content:center">
+        <span class="chip">Atlase</span>
+        <span class="chip">Onbordings</span>
+        <span class="chip">Attīstības pārrunas</span>
+        <span class="chip">Iesaistes projekti</span>
+        <span class="chip">Pārmaiņu vadība</span>
+      </div>
+    </section>
+
+    <section class="grid" id="koucings">
+      <div class="card">
+        <h2>Koučings</h2>
+        <p>
+          Droša telpa domām un lēmumiem. Manā pieejā svarīgs ir gan cilvēcīgums, gan konkrētība — lai sesijas beigās ir skaidrs, ko darīt tālāk.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <b>1) Skaidrība</b>
+            <span>Nosaucam īsto jautājumu un mērķi (nevis tikai simptomus).</span>
+          </div>
+          <div class="step">
+            <b>2) Izvēle</b>
+            <span>Atrodam reālās opcijas, robežas un resursus.</span>
+          </div>
+          <div class="step">
+            <b>3) Solis</b>
+            <span>Noslēdzam ar konkrētu rīcības plānu.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="organizacijam">
+        <h2>Organizācijām</h2>
+        <p>
+          Pieredze ar pilnu darbinieku dzīves ciklu: atlase un ievadīšana, attīstība, motivācija, exit intervijas,
+          amatu novērtēšana, mācību vajadzību plānošana, iesaiste un labbūtība.
+        </p>
+        <div class="steps" style="margin-top:12px">
+          <div class="step">
+            <b>Vadītāju atbalsts</b>
+            <span>Atgriezeniskā saite, attīstības pārrunas, komandas dinamika, pārmaiņu ieviešana.</span>
+          </div>
+          <div class="step">
+            <b>Procesu sakārtošana</b>
+            <span>Dokumentācija, iekšējie noteikumi, skaidra struktūra un atbildības.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="kontakti" style="margin-top:14px">
+      <h2>Kontakti</h2>
+      <p>
+        E-pasts: <b>kristina.kanepe@gmail.com</b> • Tel.: <b>+371 26465779</b>
+      </p>
+      <div class="cta" style="justify-content:flex-start; margin-top:12px">
+        <a class="btn primary" href="mailto:kristina.kanepe@gmail.com">Rakstīt e-pastu</a>
+        <a class="btn" href="tel:+37126465779">Zvanīt</a>
+      </div>
+    </section>
+
+    <footer>
+      <span>Gaišais templates #3 — “Centra portrets + apļi”.</span>
+      <span><b>index3.html</b></span>
+    </footer>
+  </main>
+</body>
+</html>
