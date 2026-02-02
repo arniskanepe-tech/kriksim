@@ -1,5 +1,5 @@
 /* assets/app.js
-   Floating panelis (apakšā): pārslēgšanās starp layout + 5 tēmas katram layout.
+   Floating panelis (apakšā): pārslēgšanās starp layout + tēmas katram layout.
    Standarts: izmanto CSS mainīgos --bg --ink --muted --line --card --accent --accent2 --accent3
 */
 
@@ -36,9 +36,14 @@
     const t = list[themeIndex] || list[0];
     if (!t || !t.vars) return;
 
+    // ✅ Normalizācija (panel/card saderība), ja pieejama
+    const vars = (typeof window.KR_THEME_NORMALIZE === "function")
+      ? window.KR_THEME_NORMALIZE({ ...t.vars })
+      : t.vars;
+
     const root = document.documentElement;
 
-    for (const [k, v] of Object.entries(t.vars)) {
+    for (const [k, v] of Object.entries(vars)) {
       root.style.setProperty(k, v);
     }
 
@@ -48,10 +53,13 @@
   }
 
   function getSavedThemeIndex(designId) {
+    const list = getThemes(designId);
+    const max = list.length || 5; // ja nav tēmu, lai nekrīt
+
     try {
       const v = localStorage.getItem("kr_theme_" + designId);
       const n = parseInt(v, 10);
-      if (Number.isFinite(n) && n >= 0 && n < 5) return n;
+      if (Number.isFinite(n) && n >= 0 && n < max) return n;
       return 0;
     } catch (_) {
       return 0;
@@ -72,6 +80,7 @@
   --accent3:#ffd8a8;
 }
 
+/* panelis */
 .kr-float{
   position:fixed;
   left:12px; right:12px; bottom:12px;
@@ -230,7 +239,7 @@
     const root = document.getElementById("kr-catalog");
     if (!root) return;
 
-    // iedodam katalogam bāzes tēmu
+    // katalogam bāzes tēma
     applyTheme(1, 0);
 
     const header = root.querySelector('[data-slot="header"]');
@@ -318,8 +327,9 @@
 
     const savedIdx = getSavedThemeIndex(DESIGN_ID);
     const tlist = getThemes(DESIGN_ID);
+    const maxDots = Math.max(5, tlist.length || 5); // ja būs vairāk tēmu, varēsi viegli pacelt
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < Math.min(5, maxDots); i++) {
       const title = tlist[i]?.name ? tlist[i].name : "Tēma " + (i + 1);
       const b = el("button", {
         type: "button",
