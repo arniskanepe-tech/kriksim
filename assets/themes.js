@@ -1,5 +1,5 @@
 // assets/themes.js
-console.log('themes loaded');
+console.log("themes loaded");
 
 window.KR_THEMES = {
   1: [
@@ -50,6 +50,7 @@ window.KR_THEMES = {
     { name: "Sand & Sage", vars: { "--bg":"#fffcf6","--ink":"#1f2420","--muted":"#606a61","--panel":"#ffffff","--card":"#ffffff","--line":"#efe6d6","--accent":"#7fb38a","--accent2":"#f0b35e","--accent3":"#a6d1ff" } }
   ],
 
+  // ✅ ŠIS IR JAUNAIS: layout 7 tēmas
   7: [
     { name: "Warm Minimal", vars: { "--bg":"#fffdf9","--ink":"#1b1b18","--muted":"#6b6b60","--panel":"#ffffff","--card":"#ffffff","--line":"#efe9dd","--accent":"#d4a373","--accent2":"#90be6d","--accent3":"#577590" } },
     { name: "Nordic Calm", vars: { "--bg":"#f7fbff","--ink":"#0e1a28","--muted":"#4f657a","--panel":"#ffffff","--card":"#ffffff","--line":"#dfeaf7","--accent":"#3f8efc","--accent2":"#7be0ff","--accent3":"#c7ffb6" } },
@@ -60,8 +61,8 @@ window.KR_THEMES = {
 };
 
 /**
- * Safety net: if some layout uses only --panel or only --card,
- * ensure both exist after applying theme vars.
+ * Safety net: ja kāds layout izmanto tikai --panel vai tikai --card,
+ * nodrošinam, ka abi vienmēr eksistē.
  */
 window.KR_THEME_NORMALIZE = function normalizeThemeVars(vars){
   if (!vars) return vars;
