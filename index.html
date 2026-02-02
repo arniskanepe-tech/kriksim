@@ -1,1 +1,177 @@
-<!doctype html><html><body><h1>Design Catalog</h1></body></html>
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dizainu katalogs — Kristīna</title>
+  <meta name="description" content="Dizainu katalogs: atver layout un pārslēdzies starp tiem." />
+
+  <style>
+    :root{
+      --bg:#fbfcff; --ink:#15202b; --muted:#52606d; --panel:#fff; --line:#e8eef6;
+      --accent:#4fb6c6; --accent2:#a6d86a; --accent3:#ffd8a8;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(900px 520px at 15% 10%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 62%),
+        radial-gradient(900px 520px at 85% 15%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 62%),
+        radial-gradient(900px 520px at 50% 95%, color-mix(in srgb, var(--accent3) 22%, transparent), transparent 62%),
+        var(--bg);
+      color:var(--ink);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:22px 18px 40px}
+    .hero{
+      border:1px solid var(--line);
+      border-radius:28px;
+      background: color-mix(in srgb, var(--panel) 86%, transparent);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 44px rgba(20,60,90,.08);
+      padding:20px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:start;
+    }
+    h1{margin:0 0 8px; font-size:34px; letter-spacing:-.6px; line-height:1.05}
+    .sub{margin:0; color:var(--muted); line-height:1.6}
+    .badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .badge{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--line); background:var(--panel);
+      padding:8px 10px; border-radius:999px;
+    }
+    .badge.strong{
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--accent) 12%, var(--panel)),
+        color-mix(in srgb, var(--accent2) 10%, var(--panel))
+      );
+    }
+    .tip{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:var(--panel);
+      padding:14px;
+    }
+    .tip b{display:block; margin-bottom:6px}
+    .tip p{margin:0; color:var(--muted); font-size:13px; line-height:1.5}
+
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .card{
+      display:block;
+      border:1px solid var(--line);
+      background:var(--panel);
+      border-radius:22px;
+      padding:14px;
+      box-shadow: 0 14px 28px rgba(20,60,90,.06);
+      transition: transform .08s ease;
+    }
+    .card:hover{transform: translateY(-2px)}
+    .top{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .id{
+      width:34px; height:34px; border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      border:1px solid var(--line);
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--accent) 14%, var(--panel)),
+        color-mix(in srgb, var(--accent2) 12%, var(--panel))
+      );
+      font-weight:800;
+    }
+    .name{font-weight:700}
+    .note{margin-top:8px; color:var(--muted); font-size:13px; line-height:1.55}
+    .cta{margin-top:12px; font-size:13px; color:color-mix(in srgb, var(--ink) 70%, var(--muted))}
+    footer{margin-top:14px; color:var(--muted); font-size:12px; padding-bottom:14px}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width:620px){
+      .grid{grid-template-columns: 1fr}
+      h1{font-size:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <h1>Dizainu katalogs</h1>
+        <p class="sub">
+          Šeit vari atvērt jebkuru layout (template). Katrā layout lapā vēlāk būs “floating” panelis apakšā,
+          ar pārslēgšanos starp layout + 5 tēmām (krāsu variantiem).
+        </p>
+
+        <div class="badges">
+          <span class="badge">Statisks GitHub Pages</span>
+          <span class="badge">Mobilais draudzīgs</span>
+          <span class="badge strong">Atver dizainu →</span>
+        </div>
+      </div>
+
+      <div class="tip">
+        <b>Jauns dizains?</b>
+        <p>
+          Izveido <code>index6.html</code> un pieliec linku šeit katalogā (zemāk).
+          Pēc tam dizainā apakšā būs pogas, lai pārslēgtos starp visiem.
+        </p>
+      </div>
+    </section>
+
+    <!-- FALLBACK (bez JS) — TEVIEM VIENMĒR RĀDĪSIES -->
+    <section class="grid" id="design-grid">
+      <a class="card" href="index1.html">
+        <div class="top"><div class="id">1</div><div class="name">Gaišs ceļš</div></div>
+        <div class="note">Hero + 3 kartītes, “path” vizuāls.</div>
+        <div class="cta">Atvērt →</div>
+      </a>
+
+      <a class="card" href="index2.html">
+        <div class="top"><div class="id">2</div><div class="name">Side-nav plakāts</div></div>
+        <div class="note">Kreisā fiksētā izvēlne + manifesto stils.</div>
+        <div class="cta">Atvērt →</div>
+      </a>
+
+      <a class="card" href="index3.html">
+        <div class="top"><div class="id">3</div><div class="name">Balanss apļos</div></div>
+        <div class="note">Centra portrets + harmonijas apļi.</div>
+        <div class="cta">Atvērt →</div>
+      </a>
+
+      <a class="card" href="index4.html">
+        <div class="top"><div class="id">4</div><div class="name">Stāsts / Timeline</div></div>
+        <div class="note">Ceļš no pieredzes līdz izaugsmei.</div>
+        <div class="cta">Atvērt →</div>
+      </a>
+
+      <a class="card" href="index5.html">
+        <div class="top"><div class="id">5</div><div class="name">Magazine scroller</div></div>
+        <div class="note">Horizontāla “pakalpojumu lente” + FAQ.</div>
+        <div class="cta">Atvērt →</div>
+      </a>
+    </section>
+
+    <footer>
+      Ja redzi šo katalogu, viss ir OK. Nākamais solis: ieliekam “floating” paneli visos <code>indexX.html</code>.
+    </footer>
+  </div>
+
+  <!-- OPTIONAL: ja tev ir assets/designs.js + assets/app.js,
+       tie var dinamiski pārģenerēt kartītes. Ja nav — nekas nelūst. -->
+  <script>
+    // Drošais režīms: ja nav JS failu, nekas nenotiek.
+    // Ja ir, varēsim vēlāk pārslēgties uz dinamisku sarakstu.
+  </script>
+</body>
+</html>
