@@ -1,1 +1,313 @@
-<!doctype html><html><body><h1>Layout 2</h1></body></html>
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Kristīna Kaņepe — Koučinga prakse</title>
+
+  <style>
+    :root{
+      --bg:#fbfbff;
+      --ink:#18212b;
+      --muted:#556371;
+      --line:#e9eef6;
+      --card:#ffffff;
+      --accent:#63c1cf;
+      --accent2:#bfe37a;
+      --accent3:#ffe1b7;
+      --shadow:0 18px 40px rgba(20, 60, 90, .10);
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      --max:1160px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--ink);
+      background:var(--bg);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 92px}
+
+    /* Topbar */
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:10px 0 14px;
+    }
+    .topbar b{display:block;font-size:14px}
+    .topbar small{display:block;font-size:12px;color:var(--muted)}
+    .links{display:flex;gap:10px;flex-wrap:wrap}
+    .links a{
+      font-size:13px;color:var(--muted);
+      padding:9px 11px;border-radius:999px;
+      border:1px solid var(--line);
+      background:color-mix(in srgb,var(--card) 80%,transparent);
+      backdrop-filter:blur(10px);
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      border-radius:34px;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      background:
+        radial-gradient(900px 540px at 18% 18%, color-mix(in srgb,var(--accent) 22%, transparent), transparent 62%),
+        radial-gradient(900px 540px at 86% 20%, color-mix(in srgb,var(--accent2) 18%, transparent), transparent 62%),
+        radial-gradient(900px 540px at 50% 92%, color-mix(in srgb,var(--accent3) 24%, transparent), transparent 62%),
+        color-mix(in srgb,var(--card) 86%, transparent);
+      backdrop-filter: blur(10px);
+    }
+
+    .heroInner{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+      padding:28px;
+      position:relative;
+    }
+
+    .heroInner:before{
+      content:"";
+      position:absolute;
+      left:-20%; top:58%;
+      width:140%; height:220px;
+      background:linear-gradient(90deg,
+        color-mix(in srgb,var(--accent) 16%, transparent),
+        color-mix(in srgb,var(--accent2) 14%, transparent),
+        color-mix(in srgb,var(--accent3) 18%, transparent)
+      );
+      transform:rotate(-6deg);
+      opacity:.65;
+      pointer-events:none;
+    }
+
+    .manifesto > *{position:relative}
+    .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;color:var(--muted);
+      padding:8px 10px;border:1px solid var(--line);
+      border-radius:999px;background:var(--card);
+    }
+    .tag i{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+    h1{
+      margin:14px 0 10px;
+      font-size:56px;
+      letter-spacing:-1.2px;
+      line-height:.92;
+    }
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.75;
+      max-width:68ch;
+    }
+
+    .cta{
+      display:flex;gap:10px;flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 14px;border-radius:14px;
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:0 12px 24px rgba(20,60,90,.07);
+      font-size:14px;
+    }
+    .btn.primary{
+      border-color:color-mix(in srgb,var(--accent) 40%,var(--line));
+      background:linear-gradient(135deg,
+        color-mix(in srgb,var(--accent) 18%,var(--card)),
+        color-mix(in srgb,var(--accent2) 14%,var(--card))
+      );
+    }
+
+    .side{
+      display:grid;gap:12px;position:relative;
+    }
+    .portrait{
+      border:1px solid var(--line);
+      border-radius:26px;
+      overflow:hidden;
+      background:var(--card);
+      min-height:280px;
+      position:relative;
+    }
+    .portrait img{
+      width:100%;height:100%;object-fit:cover;
+      position:absolute;inset:0;
+    }
+    .fallback{
+      position:absolute;inset:0;
+      display:grid;place-items:center;
+      color:var(--muted);font-size:13px;
+      background:
+        radial-gradient(540px 300px at 20% 15%, color-mix(in srgb,var(--accent) 22%, transparent), transparent 62%),
+        radial-gradient(540px 300px at 90% 25%, color-mix(in srgb,var(--accent2) 20%, transparent), transparent 62%),
+        color-mix(in srgb,var(--bg) 65%, var(--card));
+    }
+
+    .mini{
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:color-mix(in srgb,var(--card) 86%,transparent);
+      backdrop-filter:blur(10px);
+      padding:14px;
+      box-shadow:0 14px 28px rgba(20,60,90,.08);
+    }
+
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:color-mix(in srgb,var(--card) 86%,transparent);
+      backdrop-filter:blur(8px);
+      box-shadow:0 16px 34px rgba(20,60,90,.08);
+      padding:18px;
+    }
+    .card h2{margin:0 0 10px;font-size:18px}
+    .card p{margin:0;color:var(--muted);line-height:1.7}
+
+    .quote{
+      margin-top:14px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:var(--card);
+      padding:18px;
+      box-shadow:0 16px 34px rgba(20,60,90,.07);
+      position:relative;
+    }
+    .quote:before{
+      content:"“";
+      position:absolute;left:16px;top:-10px;
+      font-size:86px;
+      color:color-mix(in srgb,var(--accent) 28%,transparent);
+    }
+    .quote p{margin:0 0 8px;padding-left:46px}
+    .quote span{display:block;padding-left:46px;color:var(--muted);font-size:12px}
+
+    .contact{
+      margin-top:14px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:color-mix(in srgb,var(--card) 86%,transparent);
+      backdrop-filter:blur(8px);
+      box-shadow:0 16px 34px rgba(20,60,90,.08);
+      padding:18px;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;flex-wrap:wrap;
+    }
+
+    footer{
+      margin-top:14px;
+      font-size:12px;color:var(--muted);
+      display:flex;justify-content:space-between;flex-wrap:wrap;
+    }
+
+    @media (max-width: 980px){
+      .heroInner{grid-template-columns:1fr}
+      h1{font-size:42px}
+    }
+    @media (max-width: 520px){
+      h1{font-size:34px}
+      .btn{width:100%}
+      .cta{flex-direction:column}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div>
+        <b>Kristīna Kaņepe</b>
+        <small>koučings • personāla vadība</small>
+      </div>
+      <div class="links">
+        <a href="#koucings">Koučings</a>
+        <a href="#organizacijam">Organizācijām</a>
+        <a href="#kontakti">Kontakti</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="heroInner">
+        <div class="manifesto">
+          <div class="tag"><i></i> redzēt skaidrāk • rīkoties drošāk</div>
+          <h1>Izaugsme sākas ar godīgu sarunu.</h1>
+          <p class="lead">
+            Koučings cilvēkiem un organizācijām, kas vēlas nevis “kļūt labākiem”,
+            bet atrast savu īsto virzienu un rīkoties saskaņā ar to.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#kontakti">Pieteikt ievadsarunu</a>
+            <a class="btn" href="#koucings">Kā notiek koučings</a>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="portrait">
+            <img src="kristina.jpg" alt="Kristīna Kaņepe"
+                 onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='grid';">
+            <div class="fallback" style="display:none">Ieliec <b>kristina.jpg</b></div>
+          </div>
+          <div class="mini">
+            <b>Pieeja</b>
+            <p>Skaidrība → izvēle → konkrēts solis. Bez spiediena, ar struktūru.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" id="koucings">
+      <div class="card">
+        <h2>Koučings</h2>
+        <p>Individuālas sesijas lēmumiem, robežām, komunikācijai un virziena meklējumiem.</p>
+      </div>
+      <div class="card" id="organizacijam">
+        <h2>Organizācijām</h2>
+        <p>Vadītāju atbalsts, HR procesu sakārtošana, pārmaiņu vadība.</p>
+      </div>
+    </section>
+
+    <div class="quote">
+      <p>“Nav jāzina visas atbildes. Pietiek ar nākamo īsto jautājumu.”</p>
+      <span>— koučinga pamatprincips</span>
+    </div>
+
+    <div class="contact" id="kontakti">
+      <div>
+        <b>Kontakti</b>
+        <div style="color:var(--muted);font-size:13px">
+          kristina.kanepe@gmail.com<br>
+          +371 26465779
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="mailto:kristina.kanepe@gmail.com">Rakstīt e-pastu</a>
+        <a class="btn" href="tel:+37126465779">Zvanīt</a>
+      </div>
+    </div>
+
+    <footer>
+      <span>Templates #2 — Editorial / manifesto.</span>
+      <span><b>index2.html</b></span>
+    </footer>
+  </div>
+
+  <script>window.KR_DESIGN_ID = 2;</script>
+  <script src="assets/designs.js"></script>
+  <script src="assets/themes.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
