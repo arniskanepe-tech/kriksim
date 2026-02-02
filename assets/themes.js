@@ -48,13 +48,20 @@ window.KR_THEMES = {
     { name: "Ocean Sky", vars: { "--bg":"#f6fbff","--ink":"#0f2333","--muted":"#4f6474","--panel":"#ffffff","--card":"#ffffff","--line":"#dfeaf5","--accent":"#2ea7ff","--accent2":"#57d6c4","--accent3":"#ffe29a" } },
     { name: "Lavender Path", vars: { "--bg":"#fbf9ff","--ink":"#1b1630","--muted":"#5b5774","--panel":"#ffffff","--card":"#ffffff","--line":"#ebe7f7","--accent":"#7b6cff","--accent2":"#ff9fd3","--accent3":"#ffe7a3" } },
     { name: "Sand & Sage", vars: { "--bg":"#fffcf6","--ink":"#1f2420","--muted":"#606a61","--panel":"#ffffff","--card":"#ffffff","--line":"#efe6d6","--accent":"#7fb38a","--accent2":"#f0b35e","--accent3":"#a6d1ff" } }
+  ],
+
+  7: [
+    { name: "Warm Minimal", vars: { "--bg":"#fffdf9","--ink":"#1b1b18","--muted":"#6b6b60","--panel":"#ffffff","--card":"#ffffff","--line":"#efe9dd","--accent":"#d4a373","--accent2":"#90be6d","--accent3":"#577590" } },
+    { name: "Nordic Calm", vars: { "--bg":"#f7fbff","--ink":"#0e1a28","--muted":"#4f657a","--panel":"#ffffff","--card":"#ffffff","--line":"#dfeaf7","--accent":"#3f8efc","--accent2":"#7be0ff","--accent3":"#c7ffb6" } },
+    { name: "Rose Editorial", vars: { "--bg":"#fff7fb","--ink":"#2a1120","--muted":"#7a4a61","--panel":"#ffffff","--card":"#ffffff","--line":"#f2ddea","--accent":"#ff6fae","--accent2":"#ffd166","--accent3":"#86a8e7" } },
+    { name: "Lavender Studio", vars: { "--bg":"#fbf9ff","--ink":"#1b1630","--muted":"#5b5774","--panel":"#ffffff","--card":"#ffffff","--line":"#ebe7f7","--accent":"#7b6cff","--accent2":"#ff9fd3","--accent3":"#ffe7a3" } },
+    { name: "Fresh Mint", vars: { "--bg":"#f6fff9","--ink":"#122016","--muted":"#516a5a","--panel":"#ffffff","--card":"#ffffff","--line":"#dbefe3","--accent":"#2fbf71","--accent2":"#6ad6ff","--accent3":"#ffe08a" } }
   ]
 };
 
 /**
  * Safety net: if some layout uses only --panel or only --card,
  * ensure both exist after applying theme vars.
- * (Not required, but helps avoid edge cases.)
  */
 window.KR_THEME_NORMALIZE = function normalizeThemeVars(vars){
   if (!vars) return vars;
@@ -63,5 +70,4 @@ window.KR_THEME_NORMALIZE = function normalizeThemeVars(vars){
   return vars;
 };
 
-// Freeze themes object to prevent accidental runtime mutations.
 try { Object.freeze(window.KR_THEMES); } catch(e) {}
