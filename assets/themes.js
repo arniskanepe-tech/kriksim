@@ -50,3 +50,18 @@ window.KR_THEMES = {
     { name: "Sand & Sage", vars: { "--bg":"#fffcf6","--ink":"#1f2420","--muted":"#606a61","--panel":"#ffffff","--card":"#ffffff","--line":"#efe6d6","--accent":"#7fb38a","--accent2":"#f0b35e","--accent3":"#a6d1ff" } }
   ]
 };
+
+/**
+ * Safety net: if some layout uses only --panel or only --card,
+ * ensure both exist after applying theme vars.
+ * (Not required, but helps avoid edge cases.)
+ */
+window.KR_THEME_NORMALIZE = function normalizeThemeVars(vars){
+  if (!vars) return vars;
+  if (!vars["--card"] && vars["--panel"]) vars["--card"] = vars["--panel"];
+  if (!vars["--panel"] && vars["--card"]) vars["--panel"] = vars["--card"];
+  return vars;
+};
+
+// Freeze themes object to prevent accidental runtime mutations.
+try { Object.freeze(window.KR_THEMES); } catch(e) {}
