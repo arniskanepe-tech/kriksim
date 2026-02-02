@@ -1,1 +1,296 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kristīna Kaņepe — Koučings & HR</title>
+  <style>
+    :root{
+      --bg:#fbfeff;
+      --ink:#14212c;
+      --muted:#5c6b79;
+      --line:#e8f0f7;
+      --card:#ffffff;
+      --accent:#5fbfd0;
+      --accent2:#c9ea88;
+      --accent3:#ffe4bd;
+      --radius:22px;
+      --shadow:0 18px 44px rgba(20, 60, 90, .08);
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(95,191,208,.14), transparent 62%),
+        radial-gradient(900px 520px at 85% 15%, rgba(201,234,136,.14), transparent 62%),
+        radial-gradient(900px 520px at 50% 95%, rgba(255,228,189,.18), transparent 62%),
+        var(--bg);
+      color:var(--ink);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 60px}
 
+    .bar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      padding:12px 0 14px;
+      border-bottom:1px solid var(--line);
+    }
+    .bar .left b{display:block; font-size:14px}
+    .bar .left small{display:block; color:var(--muted); margin-top:2px}
+    .bar .right{display:flex; gap:10px; flex-wrap:wrap}
+    .bar a{
+      font-size:13px; color:var(--muted);
+      padding:9px 11px; border-radius:999px; border:1px solid transparent;
+    }
+    .bar a:hover{background:#fff; border-color:var(--line); color:var(--ink)}
+
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--line);
+      border-radius: 34px;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding:24px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:16px;
+      align-items:start;
+    }
+    .title{
+      font-size:52px;
+      line-height:.95;
+      letter-spacing:-1.2px;
+      margin:0 0 12px;
+    }
+    .lead{margin:0; color:var(--muted); line-height:1.7; font-size:16px; max-width: 70ch}
+    .note{
+      margin-top:12px;
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .pill{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--line);
+      background:#fff;
+      padding:8px 10px; border-radius:999px;
+    }
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px; border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 12px 24px rgba(20, 60, 90, .06);
+      font-size:14px;
+    }
+    .btn.primary{
+      border-color: rgba(95,191,208,.35);
+      background: linear-gradient(135deg, rgba(95,191,208,.14), rgba(201,234,136,.12));
+    }
+
+    .photo{
+      border:1px solid var(--line);
+      border-radius: 28px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 16px 30px rgba(20, 60, 90, .10);
+      min-height: 320px;
+    }
+    .photo img{width:100%; height:100%; object-fit:cover; display:block}
+
+    .rail{
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.86);
+      box-shadow: var(--shadow);
+      padding:14px;
+    }
+    .rail h2{margin:0 0 10px; font-size:18px}
+    .scroller{
+      display:flex; gap:12px;
+      overflow:auto;
+      padding-bottom:6px;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .scroller::-webkit-scrollbar{height:10px}
+    .scroller::-webkit-scrollbar-thumb{background:rgba(0,0,0,.10); border-radius:999px}
+    .tile{
+      min-width: 300px;
+      max-width: 320px;
+      scroll-snap-align:start;
+      border:1px solid var(--line);
+      border-radius: 18px;
+      background:#fff;
+      padding:14px;
+      box-shadow: 0 10px 18px rgba(20, 60, 90, .06);
+    }
+    .tile b{display:block; margin-bottom:6px}
+    .tile p{margin:0; color:var(--muted); line-height:1.6; font-size:13.5px}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; color:var(--muted);
+      margin-bottom:8px;
+    }
+    .dot{width:10px; height:10px; border-radius:50%}
+    .dot.a{background:rgba(95,191,208,.35)}
+    .dot.b{background:rgba(201,234,136,.35)}
+    .dot.c{background:rgba(255,228,189,.55)}
+
+    .grid{
+      margin-top:16px;
+      display:grid; gap:14px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.86);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .card h3{margin:0 0 10px; font-size:16px}
+    .card p{margin:0; color:var(--muted); line-height:1.65}
+    details{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background:#fff;
+      padding:12px 12px;
+      box-shadow: 0 10px 18px rgba(20, 60, 90, .05);
+    }
+    summary{cursor:pointer; font-weight:600}
+    details p{margin:10px 0 0; color:var(--muted); line-height:1.6}
+
+    footer{margin-top:18px; color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .title{font-size:40px}
+      .grid{grid-template-columns:1fr}
+      .photo{min-height: 280px}
+    }
+    @media (max-width: 520px){
+      .btn{width:100%}
+      .btnrow{flex-direction:column}
+      .tile{min-width: 86vw}
+    }
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <div class="bar">
+    <div class="left">
+      <b>Kristīna Kaņepe</b>
+      <small>mūžīga izaugsme • līdzsvars • skaidrība</small>
+    </div>
+    <div class="right" aria-label="Izvēlne">
+      <a href="#pakalpojumi">Pakalpojumi</a>
+      <a href="#pieeja">Pieeja</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontakti">Kontakti</a>
+    </div>
+  </div>
+
+  <section class="hero" aria-label="Hero">
+    <div>
+      <h1 class="title">Izaugsme nav skrējiens.<br/>Tā ir virziena izvēle.</h1>
+      <p class="lead">
+        Esmu personāla vadības profesionāle ar vairāk nekā desmit gadu pieredzi, kuras darba pamatā ir atklātība, cieņa un sadarbība.
+        Mana pieredze aptver pilnu darbinieku dzīves ciklu — no atlases un ievadīšanas līdz attīstībai, motivācijai un pārmaiņu vadībai.
+      </p>
+      <p class="lead" style="margin-top:10px">
+        Koučingā apvienoju strukturētu pieeju ar patiesu interesi par cilvēku — lai saruna pārtop skaidros, praktiskos soļos.
+      </p>
+
+      <div class="note">
+        <span class="pill">Atlase & kandidātu pieredze</span>
+        <span class="pill">Attīstības pārrunas</span>
+        <span class="pill">Iesaistes projekti</span>
+        <span class="pill">Pārmaiņu vadība</span>
+      </div>
+
+      <div class="btnrow">
+        <a class="btn primary" href="#kontakti">Pieteikt ievadsarunu</a>
+        <a class="btn" href="#pakalpojumi">Apskatīt pakalpojumus</a>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="kristina.jpg" alt="Kristīna Kaņepe" onerror="this.style.display='none'" />
+    </div>
+  </section>
+
+  <section class="rail" id="pakalpojumi">
+    <h2>Pakalpojumi (pavelc pa labi →)</h2>
+    <div class="scroller">
+      <div class="tile">
+        <div class="badge"><span class="dot a"></span> Koučings</div>
+        <b>Individuālais atbalsts</b>
+        <p>Skaidrība par mērķiem, robežām, komunikāciju un nākamajiem soļiem. Praktiski secinājumi, nevis teorija.</p>
+      </div>
+      <div class="tile">
+        <div class="badge"><span class="dot b"></span> Vadītājiem</div>
+        <b>Vadītāju koučings</b>
+        <p>Attīstības pārrunas, atgriezeniskā saite, komandas dinamika un pārmaiņu ieviešana cilvēcīgi un strukturēti.</p>
+      </div>
+      <div class="tile">
+        <div class="badge"><span class="dot c"></span> Organizācijām</div>
+        <b>HR procesi un sistēmas</b>
+        <p>Onbords, iesaiste, labbūtība, mācību vajadzības, dokumentācija un iekšējie noteikumi — skaidrai struktūrai.</p>
+      </div>
+      <div class="tile">
+        <div class="badge"><span class="dot a"></span> Atlase</div>
+        <b>Atbilstošs cilvēks īstajā vietā</b>
+        <p>Atlase, kur skatāmies arī uz vērtībām un personību — lai saderība ir ilgtermiņā.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid" id="pieeja">
+    <div class="card">
+      <h3>Mana pieeja</h3>
+      <p>
+        Atklātība, cieņa un sadarbība. Ticu, ka veiksmīga personāla vadība sākas ar patiesu interesi par cilvēkiem
+        un beidzas ar efektīviem procesiem, kas palīdz viņiem augt.
+      </p>
+    </div>
+    <div class="card" id="faq">
+      <h3>Biežākie jautājumi</h3>
+
+      <details>
+        <summary>Ar ko koučings atšķiras no konsultēšanas?</summary>
+        <p>Koučingā mēs ar jautājumiem un struktūru palīdzam tev pašam nonākt līdz skaidrībai un rīcībai. Konsultēšanā biežāk dod konkrētus risinājumus “no malas”.</p>
+      </details>
+
+      <details style="margin-top:10px">
+        <summary>Cik ātri parasti redz rezultātu?</summary>
+        <p>Bieži jau pēc pirmās sesijas ir lielāka skaidrība un konkrēts nākamais solis. Ilgtermiņa izmaiņām vajag konsekvenci.</p>
+      </details>
+
+      <details style="margin-top:10px">
+        <summary>Vai strādā arī ar organizācijām?</summary>
+        <p>Jā — personāla procesi, iesaiste un labbūtība, attīstības pārrunas, pārmaiņu ieviešana, vadītāju atbalsts.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card" id="kontakti" style="margin-top:14px">
+    <h3>Kontakti</h3>
+    <p>E-pasts: <b>kristina.kanepe@gmail.com</b> • Tel.: <b>+371 26465779</b></p>
+    <div class="btnrow" style="margin-top:12px">
+      <a class="btn primary" href="mailto:kristina.kanepe@gmail.com">Rakstīt e-pastu</a>
+      <a class="btn" href="tel:+37126465779">Zvanīt</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Gaišais templates #5 — “Magazine + scroller”.</span>
+    <span><b>index5.html</b></span>
+  </footer>
+</main>
+</body>
+</html>
